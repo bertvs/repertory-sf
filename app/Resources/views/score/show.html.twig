@@ -1,0 +1,64 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <a class="section" href="{{ path('score_index') }}">Scores</a>
+  <div class="divider"> / </div>
+  <div class="section active" >{{ score }}</div>
+{% endblock %}
+
+{% block body %}
+
+<div class="ui basic padded segment" id="table">
+    <table class="ui celled striped collapsing definition table">
+        <tbody>
+            <tr>
+                <td>Id</td>
+                <td>{{ score.id }}</td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>{{ score.type }}</td>
+            </tr>
+            <tr>
+                <td>Book title</td>
+                <td>{{ score.bookTitle }}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{ score.description }}</td>
+            </tr>
+            <tr>
+                <td>Editor</td>
+                <td>{{ score.editor }}</td>
+            </tr>
+            <tr>
+                <td>Publisher</td>
+                <td>{{ score.publisher }}</td>
+            </tr>
+            <tr>
+                <td>Publishing year</td>
+                <td>{{ score.publishingYear }}</td>
+            </tr>
+            <tr>
+                <td>Contents</td>
+                <td><ul>
+                    {% if score.composition %}
+                    {% for composition in score.composition %}
+                        <li><a class="line" href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition }}</a></li>
+                    {% endfor %}
+                    {% endif %}
+                </ul></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('score_edit', { 'id': score.id }) }}"><i class="edit icon"></i>Edit</a>
+    {{ form_start(delete_form) }}
+        <button class="ui basic negative button" type="submit"><i class="remove circle icon"></i>Delete</button>
+    {{ form_end(delete_form) }}
+</div>
+{% endblock %}

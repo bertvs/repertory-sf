@@ -1,0 +1,99 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <a class="section" href="{{ path('composition_index') }}">Compositions</a>
+  <div class="divider"> / </div>
+  <div class="section active" >{{ composition.title }}</div>
+{% endblock %}
+
+{% block body %}
+
+<div class="ui basic padded segment" id="table">
+    <table class="ui celled striped collapsing definition table">
+        <tbody>
+            <tr>
+                <td>Id</td>
+                <td>{{ composition.id }}</td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td>{{ composition.title }}</td>
+            </tr>
+            <tr>
+                <td>Composer</td>
+                <td class="selectable">{% if composition.composer %}<a href="{{ path('composer_show', { 'id': composition.composer.id }) }}">{{ composition.composer }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Full title</td>
+                <td>{{ composition.fullTitle }} </td>
+            </tr>
+            <tr>
+                <td>Opus</td>
+                <td>{% if composition.composer and composition.composer.workIndexName %}{{composition.composer.workIndexName}}{% else %}Op.{% endif %} {{ composition.opus }}</td>
+            </tr>
+            <tr>
+                <td>Composition year</td>
+                <td>{{ composition.compositionYear }}</td>
+            </tr>
+            <tr>
+                <td>Collection</td>
+                <td class="selectable">{% if composition.collection %}<a href="{{ path('collection_show', { 'id': composition.collection.id }) }}">{{ composition.collection }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Collection position</td>
+                <td>{{ composition.collectionPosition }}</td>
+            </tr>
+            <tr>
+                <td>Tonality</td>
+                <td class="selectable">{% if composition.tonality %}<a href="{{ path('tonality_show', { 'code': composition.tonality.code }) }}">{{ composition.tonality }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Instrumentation</td>
+                <td class="selectable">{% if composition.instrumentation %}<a href="{{ path('instrumentation_show', { 'code': composition.instrumentation.code }) }}">{{ composition.instrumentation }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Transcriber</td>
+                <td class="selectable">{% if composition.transcriber %}<a href="{{ path('composer_show', { 'id': composition.transcriber.id }) }}">{{ composition.transcriber }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Initial instrumentation</td>
+                <td class="selectable">{% if composition.initialInstrumentation %}<a href="{{ path('instrumentation_show', { 'code': composition.initialInstrumentation.code }) }}">{{ composition.initialInstrumentation }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Duration</td>
+                <td>{{ composition.duration }}:00</td>
+            </tr>
+            <tr>
+                <td>Musical form</td>
+                <td class="selectable">{% if composition.musicalForm %}<a href="{{ path('musicalform_show', { 'id': composition.musicalForm.id }) }}">{{ composition.musicalForm }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Theme</td>
+                <td>{{ composition.theme }}</td>
+            </tr>
+            <tr>
+                <td>Additional info</td>
+                <td>{{ composition.additionalInfo }}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td class="selectable">{% if composition.status %}<a href="{{ path('status_show', { 'id': composition.status.id }) }}">{{ composition.status }}</a>{% endif %}</td>
+            </tr>
+            <tr>
+                <td>To be recorded</td>
+                <td>{% if composition.toBeRecorded %}Yes{% else %}No{% endif %}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('composition_edit', { 'id': composition.id }) }}"><i class="edit icon"></i>Edit</a>
+    {{ form_start(delete_form) }}
+        <button class="ui basic negative button" type="submit"><i class="remove circle icon"></i>Delete</button>
+    {{ form_end(delete_form) }}
+</div>
+{% endblock %}

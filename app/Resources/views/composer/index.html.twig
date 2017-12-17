@@ -1,0 +1,45 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <div class="section active">Composers</div>
+{% endblock %}
+
+{% block body %}
+<div class="ui basic padded segment" id="table">
+    <table class="ui selectable celled striped table index" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Initials</th>
+                <th>Surname</th>
+                <th>Last name</th>
+                <th>Date of birth</th>
+                <th>Date of death</th>
+                <th>Country</th>
+                <th>Work index name</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for composer in composers %}
+            <tr class="link" onclick="document.location = '{{ path('composer_show', { 'id': composer.id }) }}';">
+                <td>{{ composer.id }}</td>
+                <td>{{ composer.initials }}</td>
+                <td>{{ composer.surname }}</td>
+                <td>{{ composer.lastName }}</td>
+                <td>{{ composer.birthYear}}{% if composer.birthMonth %}-{{ composer.birthMonth }}-{{ composer.birthDay }}{% endif %}</td>
+                <td>{{ composer.deathYear}}{% if composer.deathMonth %}-{{ composer.deathMonth }}-{{ composer.deathDay }}{% endif %}</td>
+                <td>{{ composer.country }}</td>
+                <td>{{ composer.workIndexName }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('composer_new') }}">
+        <i class="add circle icon"></i>Add composer
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <div class="section active">Compositions</div>
+{% endblock %}
+
+{% block body %}
+<div class="ui basic padded segment" id="table">
+    <table class="ui selectable celled striped table index" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Composer</th>
+                <th>Opus</th>
+                <th>Year</th>
+                <th>Collection</th>
+                <th>Tonality</th>
+                <th>Instrumentation</th>
+                <th>Transcription</th>
+                <th>Musical Form</th>
+                <th>Duration</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for composition in compositions %}
+            <tr class="link" onclick="document.location = '{{ path('composition_show', { 'id': composition.id }) }}';">
+                <td>{{ composition.id }}</td>
+                <td>{{ composition.title }}</td>
+                <td>{{ composition.composer }}</td>
+                <td>{{ composition.opus }}</td>
+                <td>{{ composition.compositionYear }}</td>
+                <td>{{ composition.collection }} {% if composition.collectionPosition %} ({{ composition.collectionPosition}}) {% endif %}</td>
+                <td>{{ composition.tonality }}</td>
+                <td>{{ composition.instrumentation.code }}</td>
+                <td>{% if composition.transcriber %}Yes{% else %}No{% endif %}</td>
+                <td>{{ composition.musicalForm }}</td>
+                <td>{% if composition.duration %}{{ composition.duration }}{% else %}0{% endif %}:00</td>
+                <td>{{ composition.status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('composition_new') }}">
+        <i class="add circle icon"></i>Add composition
+    </a>
+</div>
+{% endblock %}

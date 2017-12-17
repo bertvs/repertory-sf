@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block sidebar %}
+<div class="ui blue left vertical menu sidebar">
+    <div class="ui horizontal divider"></div>
+    <div class="item header">Repertory</div>
+    <div class="ui horizontal divider"></div>
+    <a class="item" href="/">Dashboard</a>
+    <div class="ui horizontal divider"></div>
+    <a class="item {% if route starts with 'composition' %} active{% endif %}" href="{{ path('composition_index') }}">Compositions</a>
+    <a class="item {% if route starts with 'composer' %} active{% endif %}" href="{{ path('composer_index') }}">Composers</a>
+    <a class="item {% if route starts with 'collection' %} active{% endif %}" href="{{ path('collection_index') }}">Collections</a>
+    <a class="item {% if route starts with 'score' %} active{% endif %}" href="{{ path('score_index') }}">Scores</a>
+    <div class="ui horizontal divider"></div>
+    <a class="item {% if route starts with 'album' %} active{% endif %}" href="{{ path('album_index') }}">Albums</a>
+    <a class="item {% if route starts with 'concert' %} active{% endif %}" href="{{ path('concert_index') }}">Concerts</a>
+    <div class="ui horizontal divider"></div>
+    <a class="item {% if route starts with 'status' %} active{% endif %}" href="{{ path('status_index') }}">Statuses</a>
+    <a class="item {% if route starts with 'musicalform' %} active{% endif %}" href="{{ path('musicalform_index') }}">Musical Forms</a>
+    <a class="item {% if route starts with 'instrumentation' %} active{% endif %}" href="{{ path('instrumentation_index') }}">Instrumentations</a>
+    <a class="item {% if route starts with "instrument" %}{% if not (route starts with "instrumentation") %} active{% endif %}{% endif %}" href="{{ path('instrument_index') }}">Instruments</a>
+    <a class="item {% if route starts with 'tonality' %} active{% endif %}" href="{{ path('tonality_index') }}">Tonalities</a>
+</div>
+{% endblock %}
+
+{% block header %}
+<div class="left menu">
+    <a class="item toggle"><i class="align left icon"></i>Menu</a>
+</div>
+<div class="center menu">
+    <div class="item"></div>
+    <div class="ui item large breadcrumb">{% block title %}{% endblock %}</div>
+</div>
+<div class="right menu">
+    <a class="item"><i class="sign out icon"></i>Sign out</a>
+</div>
+{% endblock %}

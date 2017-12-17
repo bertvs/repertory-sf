@@ -1,0 +1,42 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <a class="section" href="{{ path('tonality_index') }}">Tonalities</a>
+  <div class="divider"> / </div>
+  <div class="section active" >{{ tonality }}</div>
+{% endblock %}
+
+{% block body %}
+
+<div class="ui basic padded segment" id="table">
+    <table class="ui celled striped collapsing definition table">
+        <tbody>
+            <tr>
+                <td>Code</td>
+                <td>{{ tonality.code }}</td>
+            </tr>
+            <tr>
+                <td>Root</td>
+                <td>{{ tonality.root }}</td>
+            </tr>
+            <tr>
+                <td>Mode</td>
+                <td>{{ tonality.mode }}</td>
+            </tr>
+            <tr>
+                <td>Key signature</td>
+                <td>{{ tonality.keySignature }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('tonality_edit', { 'code': tonality.code }) }}"><i class="edit icon"></i>Edit</a>
+    {{ form_start(delete_form) }}
+        <button class="ui basic negative button" type="submit"><i class="remove circle icon"></i>Delete</button>
+    {{ form_end(delete_form) }}
+</div>
+{% endblock %}

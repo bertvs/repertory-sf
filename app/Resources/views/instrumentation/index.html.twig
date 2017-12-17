@@ -1,0 +1,37 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <div class="section active">Instrumentations</div>
+{% endblock %}
+
+{% block body %}
+<div class="ui basic padded segment" id="table">
+    <table class="ui selectable celled striped table index" width="100%">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Conducted</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for instrumentation in instrumentations %}
+            <tr class="link" onclick="document.location = '{{ path('instrumentation_show', { 'code': instrumentation.code }) }}';">
+                <td>{{ instrumentation.code }}</td>
+                <td>{{ instrumentation.description }}</td>
+                <td>{{ instrumentation.type }}</td>
+                <td>{% if instrumentation.conducted %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('instrumentation_new') }}">
+        <i class="add circle icon"></i>Add instrumentation
+    </a>
+</div>
+{% endblock %}

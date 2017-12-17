@@ -1,0 +1,89 @@
+/* BACKGROUND */
+
+.main {
+    background: repeating-linear-gradient(
+        rgba(0, 0, 0, 0.05),
+        rgba(0, 0, 0, 0.05) 25px,
+        rgba(0, 0, 0, 0.1) 25px,
+        rgba(0, 0, 0, 0.1) 26px,
+        rgba(0, 0, 0, 0.05) 26px,
+        rgba(0, 0, 0, 0.05) 31px,
+        rgba(0, 0, 0, 0.1) 31px,
+        rgba(0, 0, 0, 0.1) 32px,
+        rgba(0, 0, 0, 0.05) 32px,
+        rgba(0, 0, 0, 0.05) 37px,
+        rgba(0, 0, 0, 0.1) 37px,
+        rgba(0, 0, 0, 0.1) 38px,
+        rgba(0, 0, 0, 0.05) 38px,
+        rgba(0, 0, 0, 0.05) 43px,
+        rgba(0, 0, 0, 0.1) 43px,
+        rgba(0, 0, 0, 0.1) 44px,
+        rgba(0, 0, 0, 0.05) 44px,
+        rgba(0, 0, 0, 0.05) 49px,
+        rgba(0, 0, 0, 0.1) 49px,
+        rgba(0, 0, 0, 0.1) 50px
+    ) fixed;
+    min-height: 100vh;
+}
+
+.ui.basic.button,
+.ui.basic.buttons .ui.button,
+.ui.basic.negative.button:hover {
+    background: #fff !important;
+}
+
+
+/* TYPOGRAPHY */
+a:hover,
+.button:hover,
+input[type='submit']:hover {
+    text-decoration: underline;
+}
+
+.ui.secondary.menu .ui.active.red.item {
+    background-color: #fff;
+}
+
+/* TABLE */
+
+.dataTables_filter {
+    float: right;
+}
+
+tr.link:hover {
+    cursor:pointer;
+}
+
+.ui.buttons.dt-buttons {
+    margin-bottom: 1rem;
+}
+
+div.dataTables_scrollBody {
+    background: #fff !important;
+}
+
+.dataTables_scroll {
+    border-radius: .28571429rem;
+    border-bottom: 1px solid rgba(34,36,38,.35);
+}
+
+a:hover i,
+button:hover i {
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: none;
+}
+
+td a.line:hover {
+    text-decoration: underline;
+}
+
+td.selectable>a {
+    color:#4183c4 !important;
+}
+
+form {
+    display: inline-block;
+}

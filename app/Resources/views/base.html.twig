@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% set route = app.request.attributes.get('_route') %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Repertory |  {{ route | split('_', 2)[0] | capitalize }} </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css"
+         integrity="sha256-/Z28yXtfBv/6/alw+yZuODgTbKZm86IKbPE/5kjO/xY=" crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/se/dt-1.10.16/b-1.5.0/b-colvis-1.5.0/b-html5-1.5.0/b-print-1.5.0/fc-3.2.4/sc-1.4.3/datatables.min.css"/>
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="pushable">
+    {% block sidebar %}{% endblock %}
+
+    <div class="pusher">
+
+        <div class="ui fixed menu">
+        {% block header %}{% endblock %}
+        </div>
+        <div class="main">
+            <div class="ui basic very padded segment" id="title"></div>
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"
+        integrity="sha256-Bhi6GMQ/72uYZcJXCJ2LToOIcN3+Cx47AZnq/Bw1f7A=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/se/dt-1.10.16/b-1.5.0/b-colvis-1.5.0/b-html5-1.5.0/b-print-1.5.0/fc-3.2.4/sc-1.4.3/datatables.min.js"></script>
+        <script src="{{ asset('js/main.js') }}" ></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

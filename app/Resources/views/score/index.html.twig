@@ -1,0 +1,43 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <div class="section active">Scores</div>
+{% endblock %}
+
+{% block body %}
+<div class="ui basic padded segment" id="table">
+    <table class="ui selectable celled striped table index" width="100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Book title</th>
+                <th>Description</th>
+                <th>Editor</th>
+                <th>Publisher</th>
+                <th>Publishing year</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for score in scores %}
+            <tr class="link" onclick="document.location = '{{ path('score_show', { 'id': score.id }) }}';">
+                <td>{{ score.id }}</td>
+                <td>{{ score.type }}</td>
+                <td>{{ score.bookTitle }}</td>
+                <td>{{ score.description }}</td>
+                <td>{{ score.editor }}</td>
+                <td>{{ score.publisher }}</td>
+                <td>{{ score.publishingYear }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ui basic padded segment" id="links">
+    <a class="ui basic button" href="{{ path('score_new') }}">
+        <i class="add circle icon"></i>Add score
+    </a>
+</div>
+{% endblock %}

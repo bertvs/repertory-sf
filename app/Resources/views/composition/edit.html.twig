@@ -1,0 +1,20 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <a class="section" href="{{ path('composition_index') }}">Compositions</a>
+  <div class="divider"> / </div>
+  <a class="section" href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition.title }}</a>
+  <div class="divider"> / </div>
+  <div class="section active">Edit</div>
+{% endblock %}
+
+{% block body %}
+<div class="ui basic padded segment">
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form, { 'attr': {'class': 'ui form'} }) }}
+        <input type="submit" value="Submit" class="ui basic button"/>
+    {{ form_end(edit_form) }}
+</div>
+{% endblock %}

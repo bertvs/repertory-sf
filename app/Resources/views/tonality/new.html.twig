@@ -1,0 +1,18 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}
+  <a class="section" href="/" rel="home">Repertory</a>
+  <div class="divider"> / </div>
+  <a class="section" href="{{ path('tonality_index') }}">Tonalities</a>
+  <div class="divider"> / </div>
+  <div class="section active">New</div>
+{% endblock %}
+
+{% block body %}
+<div class="ui basic padded segment">
+    {{ form_start(form) }}
+        {{ form_widget(form, { 'attr': {'class': 'ui form'} }) }}
+        <input type="submit" value="Create" class="ui basic button"/>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
