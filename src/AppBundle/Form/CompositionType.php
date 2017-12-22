@@ -45,9 +45,6 @@ class CompositionType extends AbstractType
             ))
             ->add('theme')
             ->add('additionalInfo')
-            ->add('score', null, array(
-                'attr' => array('class'=>'ui dropdown')
-            ))
             ->add('toBeRecorded', null, array(
                 'attr' => array('class'=>'ui slider checkbox')
             ))

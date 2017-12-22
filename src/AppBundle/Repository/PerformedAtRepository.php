@@ -17,6 +17,7 @@ class PerformedAtRepository extends EntityRepository
             ['concert' => $concert],
             ['position' => 'ASC']
         );
+        $compositions = array();
         foreach($mappings as $mapping) {
             $compositions[$mapping->getPosition()] = $mapping->getComposition();
         }

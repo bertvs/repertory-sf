@@ -54,7 +54,7 @@ class Concert
      * Parse as string
      */
     public function __toString() {
-        return $this->location . " - " . $this->date->format("Y-m-d H:i");
+        return $this->location . ", " . $this->date->format("Y-m-d H:i");
     }
 
     /**

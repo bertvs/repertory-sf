@@ -22,9 +22,7 @@ class ScoreType extends AbstractType
             ->add('publishingYear', null, array(
                 'attr' => array('class'=>'small')
             ))
-            ->add('composition', NULL, array(
-                'label' => 'Contents'
-            ));;
+            ;
     }
 
     /**

@@ -19,9 +19,7 @@ class ConcertType extends AbstractType
                 'attr' => array('class'=>'small')
             ))
             ->add('description')
-            ->add('composition', NULL, array(
-                'label' => 'Select compositions'
-            ));
+            ;
     }
 
     /**

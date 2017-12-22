@@ -17,6 +17,7 @@ class PublishedInRepository extends EntityRepository
             ['score' => $score],
             ['position' => 'ASC']
         );
+        $compositions = array();
         foreach($mappings as $mapping) {
             $compositions[$mapping->getPosition()] = $mapping->getComposition();
         }

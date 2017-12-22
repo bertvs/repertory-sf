@@ -17,6 +17,7 @@ class RecordedOnRepository extends EntityRepository
             ['album' => $album],
             ['position' => 'ASC']
         );
+        $compositions = array();
         foreach($mappings as $mapping) {
             $compositions[$mapping->getPosition()] = $mapping->getComposition();
         }
