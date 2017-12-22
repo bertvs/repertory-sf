@@ -7,7 +7,36 @@
 {% endblock %}
 
 {% block body %}
-<div class="ui padded segment">
-Welcome!
+
+<div class="ui cards container fluid">
+  <div class="card"><div class="content">
+    <a class="ui header" href="{{ path('composition_index') }}">Compositions</a>
+    <p>There are {{compositions|length}} compositions in the database.</p>
+    <a class="ui basic button" href="{{ path('composition_new') }}">
+        <i class="add circle icon"></i>Add composition
+    </a>
+  </div></div>
+  <div class="card"><div class="content">
+    <a class="ui header" href="{{ path('composer_index') }}">Composers</a>
+    <p>There are {{composers|length}} compositions in the database.<p>
+    <a class="ui basic button" href="{{ path('composer_new') }}">
+        <i class="add circle icon"></i>Add composer
+    </a>
+  </div></div>
+  <div class="card"><div class="content">
+    <a class="ui header" href="{{ path('collection_index') }}">Collections</a>
+  </div></div>
+  <div class="card"><div class="content">
+    <a class="ui header" href="{{ path('score_index') }}">Scores</a>
+  </div></div>
+  <div class="card"><div class="content">
+    <a class="ui header" href="{{ path('album_index') }}">Albums</a>
+  </div></div>
+  <div class="card"><div class="content">
+    <a class="ui header" href="{{ path('concert_index') }}">Concerts</a>
+  </div></div>
+  <div class="card"><div class="content">
+    <div class="ui header">Properties</div>
+  </div></div>
 </div>
 {% endblock %}

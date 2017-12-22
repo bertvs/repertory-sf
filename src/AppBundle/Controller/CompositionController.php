@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CompositionController extends Controller
 {
-    const DEFAULT_LIMIT = 50;
 
     /**
      * Lists all composition entities.
