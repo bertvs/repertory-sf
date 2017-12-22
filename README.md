@@ -8,5 +8,7 @@ Repertory is an admin crud application to manage a personal musical 'repertory',
 After a change, the following commands should be executed:
 
 php bin/console cache:clear --env=prod
+
 php bin/console cache:clear --env=dev
+
 php bin/console assets:install
