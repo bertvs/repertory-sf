@@ -27,13 +27,11 @@
             </tr>
             <tr>
                 <td>Programme</td>
-                <td><ul>
-                    {% if concert.composition %}
-                    {% for composition in concert.composition %}
-                        <li><a class="line" href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition }} ({% if composition.duration %}{{composition.duration}}{% else %}0{% endif %}:00)</a></li>
+                <td>
+                    {% for position, composition in compositions %}
+                        <p>{{ position }}. <a class="line" href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition }}</a> ({% if composition.duration %}{{composition.duration}}{% else %}0{% endif %}:00)</p>
                     {% endfor %}
-                    {% endif %}
-                </ul></td>
+                </td>
             </tr>
             <tr>
                 <td>Description</td>

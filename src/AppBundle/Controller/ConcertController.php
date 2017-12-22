@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Concert;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Concert controller.
@@ -65,10 +66,26 @@ class ConcertController extends Controller
      */
     public function showAction(Concert $concert)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        // get all the tracks on the concert program
+        $performedAtRepository = $em->getRepository('AppBundle:PerformedAt');
+        $compositions = $performedAtRepository->getCompositionsByConcert($concert);
+
+        // add the total duration of all the tracks
+        $duration = new \DateTime("00:00:00");
+        foreach ($compositions as $composition) {
+            if ($composition->getDuration()) {
+                $duration->modify("+" . $composition->getDuration() . " minutes");
+            }
+        }
+
+        // create a delete form
         $deleteForm = $this->createDeleteForm($concert);
 
         return $this->render('concert/show.html.twig', array(
             'concert' => $concert,
+            'compositions' => $compositions,
             'delete_form' => $deleteForm->createView(),
         ));
     }

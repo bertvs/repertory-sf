@@ -165,18 +165,11 @@ class Composition
     private $transcriber;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Concert", mappedBy="composition")
-     */
-    private $concert;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->concert = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     /**
@@ -604,38 +597,5 @@ class Composition
         return $this->transcriber;
     }
 
-    /**
-     * Add concert
-     *
-     * @param \AppBundle\Entity\Concert $concert
-     *
-     * @return Composition
-     */
-    public function addConcert(\AppBundle\Entity\Concert $concert)
-    {
-        $this->concert[] = $concert;
-
-        return $this;
-    }
-
-    /**
-     * Remove concert
-     *
-     * @param \AppBundle\Entity\Concert $concert
-     */
-    public function removeConcert(\AppBundle\Entity\Concert $concert)
-    {
-        $this->concert->removeElement($concert);
-    }
-
-    /**
-     * Get concert
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getConcert()
-    {
-        return $this->concert;
-    }
 
 }
