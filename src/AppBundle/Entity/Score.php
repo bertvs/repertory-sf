@@ -64,18 +64,11 @@ class Score
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Composition", mappedBy="score")
-     */
-    private $composition;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->composition = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
     /**
@@ -237,39 +230,5 @@ class Score
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Add composition
-     *
-     * @param \AppBundle\Entity\Composition $composition
-     *
-     * @return Score
-     */
-    public function addComposition(\AppBundle\Entity\Composition $composition)
-    {
-        $this->composition[] = $composition;
-
-        return $this;
-    }
-
-    /**
-     * Remove composition
-     *
-     * @param \AppBundle\Entity\Composition $composition
-     */
-    public function removeComposition(\AppBundle\Entity\Composition $composition)
-    {
-        $this->composition->removeElement($composition);
-    }
-
-    /**
-     * Get composition
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getComposition()
-    {
-        return $this->composition;
     }
 }

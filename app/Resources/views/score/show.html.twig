@@ -43,13 +43,11 @@
             </tr>
             <tr>
                 <td>Contents</td>
-                <td><ul>
-                    {% if score.composition %}
-                    {% for composition in score.composition %}
-                        <li><a class="line" href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition }}</a></li>
+                <td>
+                    {% for position, composition in compositions %}
+                        <p>{{ position }}. <a class="line" href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition }}</a></p>
                     {% endfor %}
-                    {% endif %}
-                </ul></td>
+                </td>
             </tr>
         </tbody>
     </table>

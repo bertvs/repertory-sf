@@ -67,14 +67,20 @@ class AlbumController extends Controller
     public function showAction(Album $album)
     {
         $em = $this->getDoctrine()->getManager();
+
+        // get all the tracks on the album
         $recordedOnRepository = $em->getRepository('AppBundle:RecordedOn');
         $compositions = $recordedOnRepository->getCompositionsByAlbum($album);
+
+        // add the total duration of all the tracks
         $duration = new \DateTime("00:00:00");
         foreach ($compositions as $composition) {
             if ($composition->getDuration()) {
                 $duration->modify("+" . $composition->getDuration() . " minutes");
             }
         }
+
+        // create a delete form
         $deleteForm = $this->createDeleteForm($album);
 
         return $this->render('album/show.html.twig', array(

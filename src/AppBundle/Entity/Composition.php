@@ -172,27 +172,11 @@ class Composition
     private $concert;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Score", inversedBy="composition")
-     * @ORM\JoinTable(name="published_in",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="composition_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="score_id", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $score;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->concert = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->score = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -652,40 +636,6 @@ class Composition
     public function getConcert()
     {
         return $this->concert;
-    }
-
-    /**
-     * Add score
-     *
-     * @param \AppBundle\Entity\Score $score
-     *
-     * @return Composition
-     */
-    public function addScore(\AppBundle\Entity\Score $score)
-    {
-        $this->score[] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Remove score
-     *
-     * @param \AppBundle\Entity\Score $score
-     */
-    public function removeScore(\AppBundle\Entity\Score $score)
-    {
-        $this->score->removeElement($score);
-    }
-
-    /**
-     * Get score
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getScore()
-    {
-        return $this->score;
     }
 
 }

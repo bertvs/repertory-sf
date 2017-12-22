@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Score;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Score controller.
@@ -65,10 +66,17 @@ class ScoreController extends Controller
      */
     public function showAction(Score $score)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        // get all the compositions in the score
+        $publishedInRepository = $em->getRepository('AppBundle:PublishedIn');
+        $compositions = $publishedInRepository->getCompositionsByScore($score);
+
         $deleteForm = $this->createDeleteForm($score);
 
         return $this->render('score/show.html.twig', array(
             'score' => $score,
+            'compositions' => $compositions,
             'delete_form' => $deleteForm->createView(),
         ));
     }

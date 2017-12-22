@@ -108,14 +108,4 @@ class Album
         return $this->id;
     }
 
-    public function getCompositions()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $recordedOnRepository = $em->getRepository('AppBundle:RecordedOn');
-        $compositions = $recordedOnRepository->findBy(
-            ['album' => $this],
-            ['position' => 'ASC']
-        );
-    }
-
 }
